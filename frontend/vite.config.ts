@@ -10,7 +10,7 @@ export default defineConfig({
   })],
 
   // 从环境变量读取 base 路径
-  base: process.env.VITE_BASE_PATH || '/',
+  base: process.env.VITE_ASSETS_BASE_PATH || '/',
 
   resolve: {
     alias: {
@@ -23,7 +23,7 @@ export default defineConfig({
     port: parseInt(process.env.FRONTEND_PORT || '3000'),
     proxy: {
       '/api': {
-        target: `http://localhost:${process.env.BACKEND_PORT || '3002'}`,
+        target: `http://localhost:${process.env.BACKEND_PORT || '3001'}`,
         changeOrigin: true,
       },
     },

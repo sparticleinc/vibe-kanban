@@ -30,7 +30,7 @@ import {
 
 // 从环境变量获取 API 前缀
 const getApiBaseUrl = () => {
-  return import.meta.env.VITE_BASE_PATH || '';
+  return import.meta.env.VITE_API_BASE_PATH || '';
 };
 
 export const makeRequest = async (url: string, options: RequestInit = {}) => {
