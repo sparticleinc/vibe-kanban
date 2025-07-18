@@ -28,13 +28,22 @@ import {
   WorktreeDiff,
 } from 'shared/types';
 
+// 从环境变量获取 API 前缀
+const getApiBaseUrl = () => {
+  return import.meta.env.VITE_BASE_PATH || '';
+};
+
 export const makeRequest = async (url: string, options: RequestInit = {}) => {
   const headers = {
     'Content-Type': 'application/json',
     ...(options.headers || {}),
   };
 
-  return fetch(url, {
+  // 为 API 请求添加前缀
+  const baseUrl = getApiBaseUrl();
+  const fullUrl = url.startsWith('/') ? `${baseUrl}${url}` : url;
+
+  return fetch(fullUrl, {
     ...options,
     headers,
   });
